@@ -31,6 +31,7 @@
         }
 
         function playRound(computerChoice, userChoice) {
+
             if (userChoice === computerChoice) {
                 console.log("----------------");
                 console.log("Draw!");
@@ -40,45 +41,74 @@
             } else if (userChoice === "rock" && computerChoice === "paper") {
                 console.log("----------------");
                 console.log("The computer wins!");
+                compWins++;
                 console.log("User choice was: " + userChoice);
                 console.log("Computer choice was: " + computerChoice);
                 console.log("----------------");
             } else if (userChoice === "paper" && computerChoice === "rock") {
                 console.log("----------------");
                 console.log("The user wins!");
+                userWins++;
                 console.log("User choice was: " + userChoice);
                 console.log("Computer choice was: " + computerChoice);
                 console.log("----------------");
             } else if (userChoice === "scissors" && computerChoice === "rock") {
                 console.log("----------------");
                 console.log("The computer wins!");
+                compWins++;
                 console.log("User choice was: " + userChoice);
                 console.log("Computer choice was: " + computerChoice);
                 console.log("----------------");
             } else if (userChoice === "rock" && computerChoice === "scissors") {
                 console.log("----------------");
                 console.log("The user wins!");
+                userWins++;
                 console.log("User choice was: " + userChoice);
                 console.log("Computer choice was: " + computerChoice);
                 console.log("----------------");
             } else if (userChoice === "paper" && computerChoice === "scissors") {
                 console.log("----------------");
                 console.log("The computer wins");
+                compWins++;
                 console.log("User choice was: " + userChoice);
                 console.log("Computer choice was: " + computerChoice);
                 console.log("----------------");
             } else if (userChoice === "scissors" && computerChoice === "paper") {
                 console.log("----------------");
                 console.log("The user wins");
+                userWins++;
                 console.log("User choice was: " + userChoice);
                 console.log("Computer choice was: " + computerChoice);
                 console.log("----------------");
             }
         }
+        
+        function game() {
+            
+            for (let i = 0; i < 5; i++) {
+                console.log("Round number: " + (i+1));
+                let computerChoice = getComputerChoice();
+                let userChoice = getUserChoice();
 
-        getComputerChoice();
+                console.log(playRound(computerChoice, userChoice));
+                console.log("computer: " + compWins);
+                console.log("user: " + userWins);
+                if (compWins === 3) {
+                    console.log("The computers have won. Humanity is lost.");
+                } else if (userWins === 3) {
+                    console("Humanity reigns victorious. Death to the machines.");
+                } 
+            }
+
+            
+        }
+
+        // getComputerChoice();
         // let userChoice = "Rock";
-        playRound(getComputerChoice(), getUserChoice());
+        // playRound(getComputerChoice(), getUserChoice());
+        let userWins = 0;
+        let compWins = 0;
+        game();
 
     </script>
 </body>
