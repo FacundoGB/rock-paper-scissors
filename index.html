@@ -10,21 +10,75 @@
     <script>
         function getComputerChoice() {
             let x = Math.floor((Math.random() * 3) + 1);
-            let choice ="";
+            let computerChoice ="";
 
             if (x === 1) {
-                choice = "Rock";
+                computerChoice = "Rock";
             } else if (x === 2) {
-                choice = "Scissors";
+                computerChoice = "Scissors";
             } else if (x === 3) {
-                choice = "Paper";
+                computerChoice = "Paper";
             } else {
                 alert("ERROR")
             }
-            console.log(choice);
+            return computerChoice.toLowerCase();
+            //console.log(computerChoice);
+        }
+
+        function getUserChoice() {
+            let userChoice = prompt("What is your weapon? ");
+            return userChoice.toLowerCase();
+        }
+
+        function playRound(computerChoice, userChoice) {
+            if (userChoice === computerChoice) {
+                console.log("----------------");
+                console.log("Draw!");
+                console.log("User choice was: " + userChoice);
+                console.log("Computer choice was: " + computerChoice);
+                console.log("----------------");
+            } else if (userChoice === "rock" && computerChoice === "paper") {
+                console.log("----------------");
+                console.log("The computer wins!");
+                console.log("User choice was: " + userChoice);
+                console.log("Computer choice was: " + computerChoice);
+                console.log("----------------");
+            } else if (userChoice === "paper" && computerChoice === "rock") {
+                console.log("----------------");
+                console.log("The user wins!");
+                console.log("User choice was: " + userChoice);
+                console.log("Computer choice was: " + computerChoice);
+                console.log("----------------");
+            } else if (userChoice === "scissors" && computerChoice === "rock") {
+                console.log("----------------");
+                console.log("The computer wins!");
+                console.log("User choice was: " + userChoice);
+                console.log("Computer choice was: " + computerChoice);
+                console.log("----------------");
+            } else if (userChoice === "rock" && computerChoice === "scissors") {
+                console.log("----------------");
+                console.log("The user wins!");
+                console.log("User choice was: " + userChoice);
+                console.log("Computer choice was: " + computerChoice);
+                console.log("----------------");
+            } else if (userChoice === "paper" && computerChoice === "scissors") {
+                console.log("----------------");
+                console.log("The computer wins");
+                console.log("User choice was: " + userChoice);
+                console.log("Computer choice was: " + computerChoice);
+                console.log("----------------");
+            } else if (userChoice === "scissors" && computerChoice === "paper") {
+                console.log("----------------");
+                console.log("The user wins");
+                console.log("User choice was: " + userChoice);
+                console.log("Computer choice was: " + computerChoice);
+                console.log("----------------");
+            }
         }
 
         getComputerChoice();
+        // let userChoice = "Rock";
+        playRound(getComputerChoice(), getUserChoice());
 
     </script>
 </body>
