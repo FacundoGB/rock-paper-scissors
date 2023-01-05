@@ -17,6 +17,23 @@
     <div id="container"></div>
 
 <script>
+
+
+    //Event handler obtains information from the event
+    const userChoice = document.querySelectorAll('button');
+    userChoice.forEach((choice) => {
+        choice.addEventListener('click', (event) => {
+            //obtains reference to the user choice (button)
+            const userC = event.target;
+
+            //passes the button to getUserChoice to be proccesed. but function is unneeded
+            //const userChoice = getUserChoice(button);
+
+            //pass the user choice (button) id (r,p or s) as argument
+            playUserChoice(userC.id);
+        })
+    })
+
     //COMPUTER CHOICE METHOD
     function getComputerChoice() {
         let x = Math.floor(Math.random() * 3 + 1);
@@ -35,19 +52,17 @@
         
     }
 
-    //USER CHOICE METHOD
-    function getUserChoice() {
-            const userChoice = document.querySelectorAll('button');
 
-            userChoice.forEach((choice) => {
-                choice.addEventListener('click', function() {
-                    const compChoice = getComputerChoice();
-                    playRound(compChoice, this.id);
-                    console.log("this: " + this.id);
-                })
-            })
-        }
+    // COMBINE CHOICES
+    //calls both the comp choice method and gets the usr choice as the parameter of the event handler
+    function playUserChoice(userChoice) {
+        const compChoice = getComputerChoice();
 
+        //sends both arguments to the round
+        playRound(compChoice, userChoice);
+    }
+
+    //PLAY A ROUND
     function playRound(computerChoice, userChoice) {
 
 
@@ -104,7 +119,8 @@
 
     let userWins = 0;
     let compWins = 0;
-    playRound(getComputerChoice(), getUserChoice());
+    playUserChoice();
+
 </script>
 </body>
 </html>
