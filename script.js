@@ -23,11 +23,10 @@ function getUserChoice() {
   userChoice.forEach((choice) => {
     choice.addEventListener('click', () => {
         console.log(choice.id);
+        
     })
   })
 }
-
-
 
 function playRound(computerChoice, userChoice) {
   if (userChoice === computerChoice) {
@@ -82,7 +81,17 @@ function playRound(computerChoice, userChoice) {
 }
 
 function game() {
-  for (let i = 0; i < 5; i++) {
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach('click', () => {
+        let computerChoice = getComputerChoice();
+        let userChoice = getComputerChoice();
+
+        roundWinText.textContent = (playRound(computerChoice, userChoice));
+        userWinText.textContent = "game function user: " + userWins;
+        compWinText.textContent = "game function comp: " + compWins;
+    })
+
+/*   for (let i = 0; i < 5; i++) {
     console.log("Round number: " + (i + 1));
     let computerChoice = getComputerChoice();
     let userChoice = getUserChoice();
@@ -90,30 +99,39 @@ function game() {
     console.log(playRound(computerChoice, userChoice));
     console.log("computer: " + compWins);
     console.log("user: " + userWins);
-    if (compWins === 3) {
+    if (compWins === 3) { //game win alert
       console.log("The computers have won. Humanity is lost.");
     } else if (userWins === 3) {
       console("Humanity reigns victorious. Death to the machines.");
     }
-  }
+  } */
 }
+
 
 //DOM TO VIEW RESULTS
 const container = document.querySelector("#container");
 const allResults = document.createElement("div");
+allResults.classList.add('allResults');
+allResults.textContent = 'this is content of all results';
 allResults.style.marginTop = "20px";
 container.appendChild(allResults);
 
 //DOM USER WINS TRACKER
 const userWinText = document.createElement("p");
+userWinText.style.color = "black";
 userWinText.textContent = "The player has won: " + userWins + " rounds. Humanity still has hope."
 allResults.appendChild(userWinText);
 
 //DOM COMPUTER WINS TRACKER
 const compWinText = document.createElement("p");
+compWinText.style.color = "red";
 compWinText.textContent = "The computer has won: " + compWins + " rounds. The rise of the computers is unavoidable, resistance is futile."
 allResults.appendChild(compWinText);
 
+//DOM EACH ROUND
+const roundWinText = document.createElement('p');
+roundWinText.style.color = "blue";
+allResults.appendChild(roundWinText);
 
 
 // getComputerChoice();
