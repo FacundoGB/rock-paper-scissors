@@ -1,126 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="script.js" defer></script>
     <title>Document</title>
-</head>
-<body>
-
+  </head>
+  <body>
     <div class="buttons">
-        <button  id="rock">Rock</button>
-        <button  id="paper">Paper</button>
-        <button  id="scissors">Scissors</button>
+      <button id="rock">Rock</button>
+      <button id="paper">Paper</button>
+      <button id="scissors">Scissors</button>
     </div>
 
     <div id="container"></div>
 
-<script>
-
-
-    //Event handler obtains information from the event
-    const userChoice = document.querySelectorAll('button');
-    userChoice.forEach((choice) => {
-        choice.addEventListener('click', (event) => {
-            //obtains reference to the user choice (button)
-            const userC = event.target;
-
-            //passes the button to getUserChoice to be proccesed. but function is unneeded
-            //const userChoice = getUserChoice(button);
-
-            //pass the user choice (button) id (r,p or s) as argument
-            playUserChoice(userC.id);
-        })
-    })
-
-    //COMPUTER CHOICE METHOD
-    function getComputerChoice() {
-        let x = Math.floor(Math.random() * 3 + 1);
-        let computerChoice = "";
-
-        if (x === 1) {
-            computerChoice = "Rock";
-        } else if (x === 2) {
-            computerChoice = "Scissors";
-        } else if (x === 3) {
-            computerChoice = "Paper";
-        } else {
-            alert("ERROR");
-        }
-        return computerChoice.toLowerCase();
-        
-    }
-
-
-    // COMBINE CHOICES
-    //calls both the comp choice method and gets the usr choice as the parameter of the event handler
-    function playUserChoice(userChoice) {
-        const compChoice = getComputerChoice();
-
-        //sends both arguments to the round
-        playRound(compChoice, userChoice);
-    }
-
-    //PLAY A ROUND
-    function playRound(computerChoice, userChoice) {
-
-
-        if (userChoice === computerChoice) {
-            console.log("----------------");
-            console.log("Draw!");
-            console.log("User choice was: " + userChoice);
-            console.log("Computer choice was: " + computerChoice);
-            console.log("----------------");
-        } else if (userChoice === "rock" && computerChoice === "paper") {
-            console.log("----------------");
-            console.log("The computer wins!");
-            compWins++;
-            console.log("User choice was: " + userChoice);
-            console.log("Computer choice was: " + computerChoice);
-            console.log("----------------");
-        } else if (userChoice === "paper" && computerChoice === "rock") {
-            console.log("----------------");
-            console.log("The user wins!");
-            userWins++;
-            console.log("User choice was: " + userChoice);
-            console.log("Computer choice was: " + computerChoice);
-            console.log("----------------");
-        } else if (userChoice === "scissors" && computerChoice === "rock") {
-            console.log("----------------");
-            console.log("The computer wins!");
-            compWins++;
-            console.log("User choice was: " + userChoice);
-            console.log("Computer choice was: " + computerChoice);
-            console.log("----------------");
-        } else if (userChoice === "rock" && computerChoice === "scissors") {
-            console.log("----------------");
-            console.log("The user wins!");
-            userWins++;
-            console.log("User choice was: " + userChoice);
-            console.log("Computer choice was: " + computerChoice);
-            console.log("----------------");
-        } else if (userChoice === "paper" && computerChoice === "scissors") {
-            console.log("----------------");
-            console.log("The computer wins");
-            compWins++;
-            console.log("User choice was: " + userChoice);
-            console.log("Computer choice was: " + computerChoice);
-            console.log("----------------");
-        } else if (userChoice === "scissors" && computerChoice === "paper") {
-            console.log("----------------");
-            console.log("The user wins");
-            userWins++;
-            console.log("User choice was: " + userChoice);
-            console.log("Computer choice was: " + computerChoice);
-            console.log("----------------");
-        }
-    }
-
-    let userWins = 0;
-    let compWins = 0;
-    playUserChoice();
-
-</script>
-</body>
+    
+  </body>
 </html>
